@@ -10,7 +10,7 @@ class Application
     if req.path.match(/items/)
       item_name = req.path.split("/items/").last#turn /items/<Item.name> into <Item.name>
       if @@item_names.include?(item_name)
-        item = @@items.bsearch{|i| i.name == item_name}
+        item = @@items.bsearch{|i| i.name == item_name}.flatten
         req.return "#{item.price}"
         #item = @@items.find{|s| i.name == item_name}
       else
