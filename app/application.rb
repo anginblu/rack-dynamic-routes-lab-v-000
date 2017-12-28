@@ -8,7 +8,7 @@ class Application
     req = Rack::Request.new(env)
     @@items.each {|i| @@item_names << i.name}
     if req.path.match(/items/)
-      item_name = req.path.split("/items/").last#turn /items/<Item.name> into <Item.name>
+      item_name = req.path.split("/items/").last.to_s#turn /items/<Item.name> into <Item.name>
       if @@item_names.include?(item_name)
         item = @@items.bsearch{|i| i.name == item_name}
         req.return "#{item.price}"
