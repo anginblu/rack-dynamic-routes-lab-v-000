@@ -11,7 +11,7 @@ class Application
       item_name = req.path.split("/items/").last.to_s#turn /items/<Item.name> into <Item.name>
       if @@item_names.include?(item_name)
         item = @@items.find{|i| i.name == item_name}
-        req.write "#{item.price}"
+        resp.write "#{item.price}"
         #item = @@items.find{|s| i.name == item_name}
       else
         resp.write "Item not found"
