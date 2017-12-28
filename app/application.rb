@@ -11,7 +11,7 @@ class Application
       item_name = req.path.split("/items/").last.to_s#turn /items/<Item.name> into <Item.name>
       if @@item_names.include?(item_name)
         binding.pry
-        item = @@items.bsearch{|i| i.name == item_name}
+        item = @@items.find{|i| i.name == item_name}
         req.return "#{item.price}"
         #item = @@items.find{|s| i.name == item_name}
       else
